@@ -22,9 +22,9 @@ fn read_file(file_path: String) -> String {
 
 fn define_newline<'a>() -> &'a str {
     if cfg!(windows) {
-        return "\r\n";
+        return "\r\n\r\n";
     }
-    "\n"
+    "\n\n"
 }
 
 fn process_lines(content: String) -> Vec<u32> {
