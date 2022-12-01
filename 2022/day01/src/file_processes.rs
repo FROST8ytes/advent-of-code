@@ -1,21 +1,38 @@
-use std::fs::File;
-use std::io::{self, prelude::*, BufReader};
+use std::fs;
 
-pub fn process_file(file_path: String) -> io::Result<Vec<Vec<u32>>> {
-    let mut result = Vec::new();
-    let file = File::open(file_path)?;
-    let reader = BufReader::new(file);
-    let mut elf: Vec<u32> = Vec::new();
+pub fn process_file_rustic_p1(file_path: String) -> u32 {
+    let content = read_file(file_path);
 
-    for line in reader.lines() {
-        let calories = line?;
-        if !calories.is_empty() {
-            elf.push(calories.parse().unwrap());
-        } else {
-            result.push(elf.clone());
-            elf.clear();
-        }
+    process_lines(content).into_iter()
+        .max()
+        .expect("Unable to calculate max. Perhaps due to dirty data.")
+}
+
+pub fn process_file_rustic_p2(file_path: String) -> u32 {
+    let content = read_file(file_path);
+    let mut result = process_lines(content);
+    result.sort();
+    result[result.len()-3..].iter().sum()
+}
+
+
+fn read_file(file_path: String) -> String {
+    fs::read_to_string(file_path).expect("Unable to read file. Check file path.")
+}
+
+fn define_newline<'a>() -> &'a str {
+    if cfg!(windows) {
+        return "\r\n";
     }
+    "\n"
+}
 
-    Ok(result)
+fn process_lines(content: String) -> Vec<u32> {
+    content.split(define_newline())
+        .map(|load| {
+            load.lines()
+                .map(|calories| calories.parse::<u32>().expect("Data is not u32."))
+                .sum::<u32>()
+        })
+        .collect()
 }
