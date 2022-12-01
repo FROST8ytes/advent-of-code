@@ -9,7 +9,7 @@ pub fn process_file(file_path: String) -> io::Result<Vec<Vec<u32>>> {
 
     for line in reader.lines() {
         let calories = line?;
-        if calories.len() != 0 {
+        if !calories.is_empty() {
             elf.push(calories.parse().unwrap());
         } else {
             result.push(elf.clone());
