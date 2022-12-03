@@ -1,0 +1,21 @@
+[package]
+name = "day02"
+version = "0.1.0"
+edition = "2021"
+authors = ["Ammar Farhan Mohamad Rizam <ammarfmr11@gmail.com>"]
+
+[lib]
+name = "day02"
+path = "src/lib.rs"
+
+[[bin]]
+name = "day02p1"
+path = "src/bin/day02p1.rs"
+
+[[bin]]
+name = "day02p2"
+path = "src/bin/day02p2.rs"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
