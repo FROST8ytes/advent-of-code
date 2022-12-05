@@ -1,0 +1,118 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in library 'day04'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--lib",
+                    "--package=day04"
+                ],
+                "filter": {
+                    "name": "day04",
+                    "kind": "lib"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'day04p1'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=day04p1",
+                    "--package=day04"
+                ],
+                "filter": {
+                    "name": "day04p1",
+                    "kind": "bin"
+                }
+            },
+            "windows": {
+                "args": [
+                    "${workspaceFolder}\\input.txt"
+                ]
+            },
+            "linux": {
+                "args": [
+                    "${workspaceFolder}/input.txt"
+                ]
+            },
+            "osx": {
+                "args": [
+                    "${workspaceFolder}/input.txt"
+                ]
+            },
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'day04p1'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=day04p1",
+                    "--package=day04"
+                ],
+                "filter": {
+                    "name": "day04p1",
+                    "kind": "bin"
+                }
+            },
+            "args": [
+                "--",
+                "input.txt"
+            ],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'day04p2'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=day04p2",
+                    "--package=day04"
+                ],
+                "filter": {
+                    "name": "day04p2",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'day04p2'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=day04p2",
+                    "--package=day04"
+                ],
+                "filter": {
+                    "name": "day04p2",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}
